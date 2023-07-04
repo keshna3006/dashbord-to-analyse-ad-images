@@ -12,4 +12,15 @@ def dashboard(request):
         'clicks_data':clicks_data,
         'clicks_labels':clicks_colors}
     return render(request,'dashboard.html',context)
+def upload_view(request):
+    if request.method == 'POST':
+        # Logic to process the uploaded file
+        file = request.FILES.get('csv_file')
+        # Perform any required operations with the file
+        # For example, save the file to a specific location or process its content
 
+        # Add a variable to the context to indicate that the file has been uploaded
+        context = {'file_uploaded': True}
+        return render(request, 'upload.html', context)
+
+    return render(request, 'upload.html')
